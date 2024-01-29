@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import pytesseract
+from sudoku.params import MIN_CELL_AREA, MAX_CELL_AREA, MIN_BOARD_AREA
 
 
 def process(frame):
@@ -19,7 +20,7 @@ def process(frame):
         area = cv2.contourArea(cnt)
         x, y, w, h = cv2.boundingRect(cnt)
         if (0.7 < float(w) / h < 1.3
-            and area > 1000 * 1000
+            and area > MIN_BOARD_AREA
                 and area > sudoku_area):
             sudoku_area = area
             sudoku_rect = (x, y, w, h)
@@ -45,8 +46,8 @@ def process(frame):
     for cnt in contours:
         x, y, w, h = cv2.boundingRect(cnt)
         rect_size = w * h
-        if rect_size <= 150 * 150 and rect_size > 100 * 100:
-            tmp = frame[y+2:y+h-2, x+2:x+w-2]
+        if rect_size <= MAX_CELL_AREA and rect_size > MIN_CELL_AREA:
+            tmp = frame[y+2:y+h-2, x+2:x+w-2] # remove contour outside the digit
             digit = pytesseract.image_to_string(tmp, config=config).strip()
 
             x_center = x + w // 2

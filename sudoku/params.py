@@ -1,4 +1,5 @@
 # general parameters
+MIN_BOARD_AREA = 1000 * 1000
 MIN_CELL_AREA = 100 * 100           # approximate minimum area of a single cell (in pixel)
 MAX_CELL_AREA = 150 * 150           # approximate maximum area of a single cell (in pixel)
 OPERATION_INTERVAL = 0.02           # time interval between two continuous operations
