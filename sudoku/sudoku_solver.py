@@ -50,9 +50,9 @@ def print_board(bo):
                 print(" | ", end="")
 
             if j == 8:
-                print(bo[i][j])
+                print(str(int(bo[i][j])))
             else:
-                print(str(bo[i][j]) + " ", end="")
+                print(str(int(bo[i][j])) + " ", end="")
 
 
 def find_empty(bo):

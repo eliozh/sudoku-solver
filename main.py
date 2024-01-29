@@ -18,11 +18,14 @@ def sudoku_normal(device):
         f.write(device.screencap())
     frame = cv2.imread("./screen.png")
     sudoku, pos, cell_pos = process(frame)
+    print("puzzle:")
+    print_board(sudoku)
     sudoku_copy = np.copy(sudoku)
     solved = solve(sudoku_copy)
     if solved == False:
         print("No solution found!")
         return
+    print("sovled:")
     print_board(sudoku_copy)
     print("Done. Start operating...")
     for i in range(9):
@@ -51,7 +54,8 @@ def sudoku_event(device):
             for j in range(9):
                 if sudoku[i][j] == 0:
                     digit = sudoku_copy[i][j]
-                    device.input_tap(number_x_coords[digit], number_y_coord)
+                    label_coord = LABELS_COORD[digit]
+                    device.input_tap(*label_coord)
                     time.sleep(OPERATION_INTERVAL)
                     x = pos[0] + cell_pos[i, j, 0]
                     y = pos[1] + cell_pos[i, j, 1]

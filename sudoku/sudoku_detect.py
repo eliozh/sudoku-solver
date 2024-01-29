@@ -48,6 +48,7 @@ def process(frame):
         rect_size = w * h
         if rect_size <= MAX_CELL_AREA and rect_size > MIN_CELL_AREA:
             tmp = frame[y+2:y+h-2, x+2:x+w-2] # remove contour outside the digit
+            tmp = cv2.medianBlur(tmp, ksize=5)
             digit = pytesseract.image_to_string(tmp, config=config).strip()
 
             x_center = x + w // 2
