@@ -1,9 +1,16 @@
 import argparse
 import sys
+import time
+
 import cv2
+import numpy as np
+
 from sudoku.device import connect_device
+from sudoku.params import (AFTER_CONT_INTERVAL, AFTER_DONE_INTERVAL,
+                           AFTER_PLAY_INTERVAL, CONT_BTN_COORD, LABELS_COORD,
+                           OPERATION_INTERVAL, PLAY_BTN_COORD)
 from sudoku.sudoku_detect import process
-from sudoku.params import LABELS_COORD, OPERATION_INTERVAL, CONT_BTN_COORD, PLAY_BTN_COORD, AFTER_CONT_INTERVAL, AFTER_DONE_INTERVAL, AFTER_PLAY_INTERVAL, CONT_BTN_COORD, PLAY_BTN_COORD
+from sudoku.sudoku_solver import print_board, solve
 
 
 def sudoku_normal(device):
@@ -62,9 +69,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Sudoku auto solver with adb")
     parser.add_argument("--mode", choices=["normal", "event"])
     args = parser.parse_args(sys.argv[1:])
-    
-    mode = args.mode[0]
-    device = connect_device(device)
+
+    mode = args.mode
+    device = connect_device()
     if mode == "normal":
         sudoku_normal(device)
     elif mode == "event":
