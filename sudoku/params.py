@@ -17,7 +17,7 @@ LABELS_COORD = {
 
 # event mode related parameters
 CONT_BTN_COORD = (545, 2145)        # coordinate of `continue` button
-PLAY_BTN_COORD = (547, 1645)        # coordinate of `play` button
+PLAY_BTN_COORD = (540, 1560)        # coordinate of `play` button
 AFTER_DONE_INTERVAL = 5             # time to wait before tap `continue` button after game is done
-AFTER_CONT_INTERVAL = 1             # time to wait before tap `play` button after tap `continue` button
+AFTER_CONT_INTERVAL = 2             # time to wait before tap `play` button after tap `continue` button
 AFTER_PLAY_INTERVAL = 2             # time to wait before capture screen shot after tap `play` button

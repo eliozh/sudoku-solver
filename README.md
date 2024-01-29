@@ -6,3 +6,9 @@ sudoku solver for [Sudoku Game on Google Play](https://play.google.com/store/app
 - adb v1.0.41
 - tesseract v5.3.3.20231005
 - turn on USB debugging and allow simulating input.
+
+# Usage
+```python
+python ./main.py --mode {normal, event}
+```
+The default parameter is for Redmi Note 12 Turbo (Poco F5) with **$1080 \times 2400$** resolution.
